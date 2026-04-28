@@ -63,8 +63,7 @@ if and only if $a_{11}a_{22} - a_{12}a_{21} \ne 0$
 - The flow:
 $$ Ax = b \iff A^TAx = A^Tb \iff x = (A^TA)^{-1}A^Tb $$
 then use the **Moore-Penrose pseudo-inverse** $(A^TA)^{-1}A^T$
-- In practice, they use **Richardson method**, **Jacobi method**, **Gauß-Seidel method**, **successive over-relaxation
-method**, **Krylov subspace methods** (conjugate gradients, generalised minimal residual, biconjugate gradients)
+- In practice, they use **Richardson method**, **Jacobi method**, **Gauß-Seidel method**, **successive over-relaxation method**, **Krylov subspace methods** (conjugate gradients, generalised minimal residual, biconjugate gradients)
 
 ## 4. Vector Spaces
 
