@@ -45,10 +45,10 @@ if and only if $a_{11}a_{22} - a_{12}a_{21} \ne 0$
   - **Associativity**:
     - $C \in \mathbb{R}^{m \times n}, (\lambda\psi)C = \lambda(\psi C)$
     - $B \in \mathbb{R}^{m \times n}, C \in \mathbb{R}^{n \times k}, \lambda(BC) = (\lambda B)C = B(\lambda C) = (BC)\lambda$
-    - $\forall{\lambda} \in \R, (\lambda C)^{T} = C^{T}\lambda^{T} = C^{T}\lambda = \lambda C^{T}$
+    - $\forall{\lambda} \in \mathbb{R}, (\lambda C)^{T} = C^{T}\lambda^{T} = C^{T}\lambda = \lambda C^{T}$
   - Distributivity:
-    - $C \in \R^{m \times n}, (\lambda + \psi)C = \lambda C + \psi C$
-    - $B, C \in \R^{m \times n}, \lambda(B + C) = \lambda B + \lambda C$
+    - $C \in \mathbb{R}^{m \times n}, (\lambda + \psi)C = \lambda C + \psi C$
+    - $B, C \in \mathbb{R}^{m \times n}, \lambda(B + C) = \lambda B + \lambda C$
 
 ## 3. Solving Systems of Linear Equations
 ### 3.1 Basic
@@ -77,40 +77,40 @@ Flow of understanding:
 - A set $\mathcal{G}$ with an operation $\otimes: \mathcal{G} \times \mathcal{G} \rightarrow \mathcal{G}$. Then $G := (\mathcal{G}, \otimes)$ is a group if:
   - **Closure** of $\mathcal{G}$ under $\otimes$: $\forall x, y \in \mathcal{G}: (x \otimes y) \in \mathcal{G}$
   - **Associativity**: $\forall x, y, z \in \mathcal{G}: (x \otimes y)\otimes z = x \otimes(y \otimes z)$
-  - **Neutral element**: $\exist e \in \mathcal{G}, \forall x \in \mathcal{G}: x \otimes e = e \otimes x = x$
-  - **Inverse element** ($x^{-1}$): $\forall x \in \mathcal{G}, \exist y \in \mathcal{G}: x \otimes y = y \otimes x = e$ with $e$ := **neutral element**.
-  - **Abilian group**: $\forall x, y \in \mathcal{G}: x \otimes y = y \otimes x$ (e.g. $(\R \backslash \{0\}, \cdot)$)
-- **General linear group**: $GL(n, \R)$ - a set of regular (invertible) matrices $A \in \R^{n \times n}$
+  - **Neutral element**: $\exists e \in \mathcal{G}, \forall x \in \mathcal{G}: x \otimes e = e \otimes x = x$
+  - **Inverse element** ($x^{-1}$): $\forall x \in \mathcal{G}, \exists y \in \mathcal{G}: x \otimes y = y \otimes x = e$ with $e$ := **neutral element**.
+  - **Abilian group**: $\forall x, y \in \mathcal{G}: x \otimes y = y \otimes x$ (e.g. $(\mathbb{R} \backslash \{0\}, \cdot)$)
+- **General linear group**: $GL(n, \mathbb{R})$ - a set of regular (invertible) matrices $A \in \mathbb{R}^{n \times n}$
 
 ### 4.2 Vector Spaces
 - **Inner operation** := addition; **Outer operation** := scaling. They have nothing to do with inner/outer products.
-- **Vector space**: real-valued $V = (\mathcal{V} , +, \cdot)$ (set $\mathcal{V}$, operations $+: \mathcal{V} \times \mathcal{V} \rightarrow \mathcal{V}$ (**vector addition**) **and** $\cdot: \R \times \mathcal{V} \rightarrow \mathcal{V}$) (**multiplication by scalars**), where:
+- **Vector space**: real-valued $V = (\mathcal{V} , +, \cdot)$ (set $\mathcal{V}$, operations $+: \mathcal{V} \times \mathcal{V} \rightarrow \mathcal{V}$ (**vector addition**) **and** $\cdot: \mathbb{R} \times \mathcal{V} \rightarrow \mathcal{V}$) (**multiplication by scalars**), where:
   - $(\mathcal{V}, +)$ is an **Abelian group**.
   - **Distributivity**:
-    - $\forall \lambda \in \R; x, y \in \mathcal{V}: \lambda \cdot (x+y) = \lambda\cdot x + \lambda\cdot y$
-    - $\forall \lambda, \psi \in \R; x \in \mathcal{V}: (\lambda + \psi)\cdot x = \lambda\cdot x + \psi\cdot x$
-  - **Associativity** (outer op): $\forall\lambda,\psi\in\R; x \in \mathcal{V}: \lambda\cdot(\psi\cdot x) = (\lambda\psi)\cdot x$
+    - $\forall \lambda \in \mathbb{R}; x, y \in \mathcal{V}: \lambda \cdot (x+y) = \lambda\cdot x + \lambda\cdot y$
+    - $\forall \lambda, \psi \in \mathbb{R}; x \in \mathcal{V}: (\lambda + \psi)\cdot x = \lambda\cdot x + \psi\cdot x$
+  - **Associativity** (outer op): $\forall\lambda,\psi\in\mathbb{R}; x \in \mathcal{V}: \lambda\cdot(\psi\cdot x) = (\lambda\psi)\cdot x$
   - **Neutral element** (for outer op): $\forall x \in \mathcal{V}: 1\cdot x = x$
   - **Neutral element** (for inner op): $\mathbf{0} = [0,...,0]^{T}$ of $V = (\mathcal{V}, +)$
 - $x \in V$ are called **Vectors**. By default, $x$ := **column vector**, $x^{T}$ := **row vector**.
 - (Column) Vectors can be treated as $n \times 1$ matrices for multiplications:
-  - **Outer product**: $\bm{a}\bm{b}^{T} \in \R^{n \times n}$
-  - **Inner product** (scalar/dot product): $\bm{a}^{T}\bm{b} \in \R$
+  - **Outer product**: $\bm{a}\bm{b}^{T} \in \mathbb{R}^{n \times n}$
+  - **Inner product** (scalar/dot product): $\bm{a}^{T}\bm{b} \in \mathbb{R}$
 
 ### 4.3 Vector Subspaces
 - A **closed** subset in a vector space. We perform ops and will never leave it.
 - In ML, Vector subspaces are used for **dimensionality reduction**.
-- **Vector subspace**: $\mathcal{U} \subseteq{\mathcal{V}}, \mathcal{U}\ne{\empty}$, then $U = (\mathcal{U}, +, \cdot)$ is a vector subspace (*linear subspace*) of $V$ (denoted $U \subseteq V$) if ops $+$ and $\cdot$ are restricted to $\mathcal{U}\times\mathcal{U}$ and $\R\times\mathcal{U}$.
+- **Vector subspace**: $\mathcal{U} \subseteq{\mathcal{V}}, \mathcal{U}\ne{\empty}$, then $U = (\mathcal{U}, +, \cdot)$ is a vector subspace (*linear subspace*) of $V$ (denoted $U \subseteq V$) if ops $+$ and $\cdot$ are restricted to $\mathcal{U}\times\mathcal{U}$ and $\mathbb{R}\times\mathcal{U}$.
 - A vector subspace inherits properties of its parent set.
 - To determine $U$ is a subspace of $V$, we show:
   - $\mathcal{U}\ne\empty$, in particular: $\bf{0}\in\mathcal{U}$
   - **Closure** of $U$:
-    - on outer op: $\forall\lambda\in\R, \forall\bm{x}\in\mathcal{U}: \lambda\bm{x}\in\mathcal{U}$
+    - on outer op: $\forall\lambda\in\mathbb{R}, \forall\bm{x}\in\mathcal{U}: \lambda\bm{x}\in\mathcal{U}$
     - on inner op: $\forall\bm{x},\bm{y}\in\mathcal{U}: \bm{x}+\bm{y}\in\mathcal{U}$
 
 ### 4.4 Linear Independence
 - **Intuition**: find a set of vectors that represent the whole vector space with closure property. That vector is called **basis**.
-- **Linear Combination**: $\bm{v}\in V$ if for $\bm{x}_{1},...,\bm{x}_{k} \in V$, and $\lambda_{1},...,\lambda_{k} \in\R$, we have $\bm{v} = \sum_{i=1}^{k}\lambda_{i}\bm{x}_{i} \in V$
+- **Linear Combination**: $\bm{v}\in V$ if for $\bm{x}_{1},...,\bm{x}_{k} \in V$, and $\lambda_{1},...,\lambda_{k} \in\mathbb{R}$, we have $\bm{v} = \sum_{i=1}^{k}\lambda_{i}\bm{x}_{i} \in V$
 - $\bf{0}\in V$ is always a **trivial** combination, for non-trivial ones, not all $\lambda_{i}$ are 0.
 - **Linear Independence**:
   - $k$ vectors are either **linearly dependent** or **linearly independent**.
@@ -153,14 +153,14 @@ for $B = [b_{1},...,b_{k}]$, we have:
 x_{j}=B\lambda_{j}, \lambda_{j} = \begin{bmatrix}\lambda_{1j}\\\vdots\\\lambda_{kj}\end{bmatrix},
 j=1,...,m
 ```
-To test whether $x_{1},...,x_{m}$ are linearly independent, check if $\exist{\psi}\in\R: \sum_{j=1}^{m}\psi_{j}x_{j} = \bf{0}$.
+To test whether $x_{1},...,x_{m}$ are linearly independent, check if $\exist{\psi}\in\mathbb{R}: \sum_{j=1}^{m}\psi_{j}x_{j} = \bf{0}$.
 The LHS is:
 ```math
 \sum_{j=1}^{m}\psi_{j}B\lambda_{j} = B\sum_{j=1}^{m}\psi_{j}\lambda_{j}
 ```
 Now, $\{x_{1},...,x_{m}\}$ are linearly independent *if and only if* $\{\lambda_{1},...,\lambda_{m}\}$ are linearly independent.
 
-> e.g., given $b_{1},...,b_{4}\in\R^{n}$ and
+> e.g., given $b_{1},...,b_{4}\in\mathbb{R}^{n}$ and
 > ```math
 > \begin{array}{lcr}
 >   x_{1} = b_{1} - 2b_{2} + b_{3} - b_{4} \\
