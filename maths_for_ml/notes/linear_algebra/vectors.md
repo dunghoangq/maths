@@ -1,19 +1,19 @@
-# Vectors and Vector Spaces
+Vectors and Vector Spaces
 ===========================
 
 ## 1. Systems of Linear Equations
 - Many problems can be formulated as systems of Linear Equations -> Linear Algebra.
 - We solve linear eq in high-school but this time, see it in vector pov.
-$$
+```math
 \begin{bmatrix}
 a_{11} \\ ... \\ a_{m1} \end{bmatrix} x_{1}
 + \begin{bmatrix} a_{12} \\ ... \\ a_{m2} \end{bmatrix} x_{2}
 + ...
 + \begin{bmatrix} a_{1n} \\ ... \\ a_{mn} \end{bmatrix} x_{n}
 = \begin{bmatrix} b_{1} \\ ... \\ b_{m} \end{bmatrix}
-$$
+```
 or
-$$
+```math
 \begin{bmatrix}
 a_{11} \ ... \ a_{1n} \\
 ... \\
@@ -21,7 +21,7 @@ a_{m1} \ ... \ a_{mn}
 \end{bmatrix} 
 \begin{bmatrix} x_{1} \\ ... \\ x_{2} \end{bmatrix}
 = \begin{bmatrix} b_{1} \\ ... \\ b_{m} \end{bmatrix}
-$$
+```
 
 ## 2. Matrices
 ### 2.1 Addition and Multiplication
@@ -61,7 +61,9 @@ if and only if $a_{11}a_{22} - a_{12}a_{21} \ne 0$
 
 ### 3.2 Algorithms for Solving a System of Linear Equation
 - The flow:
-$$ Ax = b \iff A^TAx = A^Tb \iff x = (A^TA)^{-1}A^Tb $$
+```math
+Ax = b \iff A^TAx = A^Tb \iff x = (A^TA)^{-1}A^Tb
+```
 then use the **Moore-Penrose pseudo-inverse** $(A^TA)^{-1}A^T$
 - In practice, they use **Richardson method**, **Jacobi method**, **Gauß-Seidel method**, **successive over-relaxation method**, **Krylov subspace methods** (conjugate gradients, generalised minimal residual, biconjugate gradients)
 
@@ -120,74 +122,78 @@ Flow of understanding:
 
 
 > e.g., Given:
-> $$
-x_{1} = \begin{bmatrix}1\\2\\-3\\4\end{bmatrix},
-x_{2} = \begin{bmatrix}1\\1\\0\\2\end{bmatrix},
-x_{3} = \begin{bmatrix}-1\\-2\\1\\1\end{bmatrix}
->$$
+> ```math
+> x_{1} = \begin{bmatrix}1\\2\\-3\\4\end{bmatrix},
+> x_{2} = \begin{bmatrix}1\\1\\0\\2\end{bmatrix},
+> x_{3} = \begin{bmatrix}-1\\-2\\1\\1\end{bmatrix}
+> ```
 > are *linearly independent*. Because let's:
-> $$\lambda_{1}x_{1} + \lambda_{2}x_{2} + \lambda_{3}x_{3} = \bm{0}$$
+> ```math
+> \lambda_{1}x_{1} + \lambda_{2}x_{2} + \lambda_{3}x_{3} = \bm{0}
+> ```
 > then we have REF:
-> $$\begin{bmatrix}
-  1 & 1 & -1 \\
-  0 & 1 & 0 \\
-  0 & 0 & 1 \\
-  0 & 0 & 0
-\end{bmatrix}$$
+> ```math
+> \begin{bmatrix}
+>   1 & 1 & -1 \\
+>   0 & 1 & 0 \\
+>   0 & 0 & 1 \\
+>   0 & 0 & 0
+> \end{bmatrix}
+> ```
 > in which every column is a *pivot column*.
 
 - General form:
-$$
+```math
 x_{1} = \sum_{i=1}^{k}\lambda_{i1}b_{i} \\
 \vdots \\
 x_{m} = \sum_{i=1}^{k}\lambda_{im}b_{i}
-$$
+```
 for $B = [b_{1},...,b_{k}]$, we have:
-$$
+```math
 x_{j}=B\lambda_{j}, \lambda_{j} = \begin{bmatrix}\lambda_{1j}\\\vdots\\\lambda_{kj}\end{bmatrix},
 j=1,...,m
-$$
+```
 To test whether $x_{1},...,x_{m}$ are linearly independent, check if $\exist{\psi}\in\R: \sum_{j=1}^{m}\psi_{j}x_{j} = \bf{0}$.
 The LHS is:
-$$
+```math
 \sum_{j=1}^{m}\psi_{j}B\lambda_{j} = B\sum_{j=1}^{m}\psi_{j}\lambda_{j}
-$$
+```
 Now, $\{x_{1},...,x_{m}\}$ are linearly independent *if and only if* $\{\lambda_{1},...,\lambda_{m}\}$ are linearly independent.
 
 > e.g., given $b_{1},...,b_{4}\in\R^{n}$ and
-> $$
-\begin{array}{lcr}
-  x_{1} = b_{1} - 2b_{2} + b_{3} - b_{4} \\
-  x_{2} = -4b_{1} - 2b_{2} + 4b_{4} \\
-  x_{3} = 2b_{1} + 3b_{2} - b_{3} - 3b_{4} \\
-  x_{4} = 17b_{1} - 10b_{2} + 11b_{3} + b_{4}
-\end{array}
-> $$
+> ```math
+> \begin{array}{lcr}
+>   x_{1} = b_{1} - 2b_{2} + b_{3} - b_{4} \\
+>   x_{2} = -4b_{1} - 2b_{2} + 4b_{4} \\
+>   x_{3} = 2b_{1} + 3b_{2} - b_{3} - 3b_{4} \\
+>   x_{4} = 17b_{1} - 10b_{2} + 11b_{3} + b_{4}
+> \end{array}
+> ```
 > Now look at these column vectors:
-> $$
-\{
-  \begin{bmatrix}1\\-2\\1\\-1\end{bmatrix},
-  \begin{bmatrix}-4\\-2\\0\\4\end{bmatrix},
-  \begin{bmatrix}2\\3\\-1\\-3\end{bmatrix},
-  \begin{bmatrix}17\\-10\\11\\1\end{bmatrix}
-\}
-> $$
+> ```math
+> \{
+>   \begin{bmatrix}1\\-2\\1\\-1\end{bmatrix},
+>   \begin{bmatrix}-4\\-2\\0\\4\end{bmatrix},
+>   \begin{bmatrix}2\\3\\-1\\-3\end{bmatrix},
+>   \begin{bmatrix}17\\-10\\11\\1\end{bmatrix}
+> \}
+> ```
 > if $x_{1},...,x_{4}$ are linearly independent, the column vectors above must also be linearly independent. The REF of the matrix formed from these vectors is:
-> $$
-A = 
-\begin{bmatrix}
-  1 & -4 & 2 & 17\\
-  -2 & -2 & 3 & -10\\
-  1 & 0 & -1 & 11\\
-  -1 & 4 & -3 & 1
-\end{bmatrix}
-= \begin{bmatrix}
-  1 & 0 & 0 & -7\\
-  0 & 1 & 0 & -15\\
-  0 & 0 & 1 & -18\\
-  0 & 0 & 0 & 0
-\end{bmatrix}
-> $$
+> ```math
+> A = 
+> \begin{bmatrix}
+>   1 & -4 & 2 & 17\\
+>  -2 & -2 & 3 & -10\\
+>   1 & 0 & -1 & 11\\
+>   -1 & 4 & -3 & 1
+> \end{bmatrix}
+> = \begin{bmatrix}
+>   1 & 0 & 0 & -7\\
+>   0 & 1 & 0 & -15\\
+>   0 & 0 & 1 & -18\\
+>   0 & 0 & 0 & 0
+> \end{bmatrix}
+> ```
 > Not all columns are *pivot columns* -> Linearly dependent: $x_{4} = -7x_{1} -15x_{2} - 18x_{3}$
 
 ------------------------
