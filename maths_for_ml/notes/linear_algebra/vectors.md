@@ -35,7 +35,9 @@ a_{m1} \ ... \ a_{mn}
 ### 2.2 Inverse & Transpose
 - **Inverse**: $B$ is the inverse of $A$ if $A, B \in \mathbb{R}^{n \times n}: AB = I_{n} = BA$ and A is called *regular/invertible/nonsingular*, otherwise *singular/noninvertible*.
 - For $2 \times 2$ matrices:
-$$ A^{-1} = \frac{1}{a_{11}a_{22} - a_{12}a_{21}} \begin{bmatrix} a_{22} \ -a_{12} \\ -a_{21} \ a_{11} \end{bmatrix} $$
+```math
+A^{-1} = \frac{1}{a_{11}a_{22} - a_{12}a_{21}} \begin{bmatrix} a_{22} \ -a_{12} \\ -a_{21} \ a_{11} \end{bmatrix}
+```
 if and only if $a_{11}a_{22} - a_{12}a_{21} \ne 0$
 - **Transpose**: $B = A^{T}$ if $A \in \mathbb{R}^{m \times n}, B \in \mathbb{R}^{n \times m}$ with $b_{ij} = a_{ji}$
 - **Symmetry**: $A$ is symmetric if for $A \in \mathbb{R}^{n \times n}$ and $A = A^{T}$
@@ -339,5 +341,146 @@ A_{\Phi} = [\alpha_1, \alpha_2, \alpha_3] = \begin{bmatrix}
   -1 & 2 & 4
 \end{bmatrix}
 ```
+
+### 7.2 Basis Change
+Linear mapping $\Phi: V \rightarrow W$. $V$ has two ordered bases:
+```math
+B = (b_1,...,b_n), \~{B} = (\~{b}_1,...,\~{b}_n)
+```
+and $W$ has two ordered bases:
+```math
+C=(c_1,...,c_m), \~{C}=(\~{c}_1,...,\~{c}_m)
+```
+Transformation matrix $A_{\Phi} \in \mathbb{R}^{m\times n}$ with respect to $B$ and $C$, $\~{A}_{\Phi} \in \mathbb{R}^{m\times n}$ with respect to $\~{B}$ and $\~{C}$. ***The question is how $A$ and $\~{A}$ are related***????
+
+That's the problem of basis change, from $B,C$ to $\~{B}, \~{C}$.
+
+*e.g., A transformation matrix with respect to the canonical basis in $\mathbb{R}^2$*
+```math
+A = \begin{bmatrix}
+  2 & 1 \\
+  1 & 2
+\end{bmatrix}
+```
+*If we define new basis*
+```math
+B = (\begin{bmatrix} 1 \\ 1 \end{bmatrix},
+  \begin{bmatrix} 1 \\ -1 \end{bmatrix}
+)
+```
+*we obtain a diagonal transformation matrix with the formula $\~{A} = P^{-1}AP$ with P is the matrix with columns are the new basis.*
+```math
+\~{A} = \begin{bmatrix}
+  3 & 0 \\
+  0 & 1
+\end{bmatrix}
+```
+*The reason why $\~{A}$ is a diagonal matrix is because of the way they choose B as **eigenvectors** of A.*
+
+*For $b_1 = [1,1]^{T}$, $Ab_1=[3,3]^T = 3b_1$. For $b_2=[1, -1]^T$, $Ab_2 = [1, -1]^T = 1b_2$. So $b_1$ stretched by 3 and $b_2$ stretched by 1.*
+
+> **Theorem 2.20** (Basis Change): A linear mapping $\Phi: V \rightarrow W$, ordered bases of $V$ and $W$: $B=(b_{1\rightarrow n}), \~{B}=(\~{b}_{1\rightarrow n})$ and $C=(c_{1\rightarrow m}), \~{C}=(\~{c}_{1\rightarrow m})$. Transformation matrix $A_{\Phi}$ of $\Phi$ with respect to $B$ and $\~{B}$, the corresponding transformation matrix with respect to the bases $C$ and $\~{C}$ is
+> ```math
+> \~{A}_{\Phi} = T^{-1}A_{\Phi}S
+> ```
+- $S \in \mathbb{R}^{n\times n}$: transformation matrix of $\text{id}_V$ that maps coordinates with respect to $\~{B}$ on to coordinates with respect to $B$.
+- $T \in \mathbb{R}^{m\times m}$: transformation matrix of $\text{id}_W$ that maps the coordinates with respect to $\~{C}$ on to coordinates with respect to $C$.
+
+**Some definitions**
+- **Equivalence**: Matrices $A, \~{A} \in \mathbb{R}^{m\times n}$ are equivalent if there exists *regular matrices* $S \in \mathbb{R}^{n\times n}, T \in \mathbb{R}^{m\times m}: \~{A} = T^{-1}AS$
+- **Similarity**: Matrices $A, \~{A} \in \mathbb{R}^{n\times n}$ are similar if there exists a *regular matrix* $S\in\mathbb{R}^{n\times n}: \~{A}=S^{-1}AS$.
+
+*e.g., $\Phi:\mathbb{R}^3\rightarrow\mathbb{R}^4$ and transformation matrix*
+```math
+A_{\Phi} = \begin{bmatrix}
+  1 & 2 & 0 \\
+  -1 & 1 & 3 \\
+  3 & 7 & 1 \\
+  -1 & 2 & 4
+\end{bmatrix}
+```
+*with respect to bases*
+```math
+B = (
+  \begin{bmatrix}1\\0\\0\end{bmatrix},
+  \begin{bmatrix}0\\1\\0\end{bmatrix},
+  \begin{bmatrix}0\\0\\1\end{bmatrix}
+),
+C = (
+  \begin{bmatrix}1\\0\\0\\0\end{bmatrix},
+  \begin{bmatrix}0\\1\\0\\0\end{bmatrix},
+  \begin{bmatrix}0\\0\\1\\0\end{bmatrix},
+  \begin{bmatrix}0\\0\\0\\1\end{bmatrix}
+)
+```
+*We seek the transformation matrix $\~{A}_{\Phi}$ with respect to new bases*
+```math
+\~{B} = (
+  \begin{bmatrix}1\\1\\0\end{bmatrix},
+  \begin{bmatrix}0\\1\\1\end{bmatrix},
+  \begin{bmatrix}1\\0\\1\end{bmatrix}
+) \in \mathbb{R}^3,
+\~{C} = (
+  \begin{bmatrix}1\\1\\0\\0\end{bmatrix},
+  \begin{bmatrix}1\\0\\1\\0\end{bmatrix},
+  \begin{bmatrix}0\\1\\1\\0\end{bmatrix},
+  \begin{bmatrix}1\\0\\0\\1\end{bmatrix}
+) \in \mathbb{R}^4
+```
+$Then equivalently,$
+```math
+S = \begin{bmatrix}
+  1 & 1 & 0 \\
+  0 & 1 & 1 \\
+  1 & 0 & 1
+\end{bmatrix},
+T = \begin{bmatrix}
+  1 & 1 & 0 & 1 \\
+  1 & 0 & 1 & 0 \\
+  0 & 1 & 1 & 0 \\
+  0 & 0 & 0 & 1
+\end{bmatrix}
+```
+$Applying **theorem 2.20**, we have$
+```math
+\~{A}_{\Phi}=T^{-1}A_{\Phi}S = \frac{1}{2}\begin{bmatrix}
+  1 & 1 & -1 & -1 \\
+  1 & -1 & 1 & -1 \\
+  -1 & 1 & 1 & 1 \\
+  0 & 0 & 0 & 2
+\end{bmatrix}
+\begin{bmatrix}
+  3 & 2 & 1 \\
+  0 & 4 & 2 \\
+  10 & 8 & 4 \\
+  1 & 6 & 3
+\end{bmatrix} = \begin{bmatrix}
+  -4 & -4 & -2 \\
+  6 & 0 & 0 \\
+  4 & 8 & 4 \\
+  1 & 6 & 3
+\end{bmatrix}
+```
+
+### 7.3 Image and Kernel
+Linear mapping $\Phi:V\rightarrow W$ (V := domain, W := codomain of $\Phi$).
+- **Kernel/Null space**:
+```math
+\text{ker}(\Phi):=\Phi^{-1}(0_{W})= \{ v\in V:\Phi(v) = 0_W \}
+```
+- **Image/range**:
+```math
+\text{Im}(\Phi):=\Phi(V)=\{ w\in W | \exists v \in V: \Phi(v) = w \}
+```
+
+> **Theorem 2.24** (Rank-Nullity Theorem): For vector spaces $V, W$, a linear mapping $\Phi: V\rightarrow W$ it holds that
+> ```math
+> \text{dim}(\text{ker}(\Phi)) + \text{dim}(\text{Im}(\Phi)) = \text{dim}(V)
+> ```
+- $\text{dim}(\text{Im}(\Phi)) < \text{dim}(V)$ -> $\text{ker}(\Phi)$ is **non-trivial** (the kernel contains more than $0_V$ and $\text{dim}(\text{ker}(\Phi)) \geq 1$).
+- $A_{\Phi}$ is trhe transformation matrix and $\text{dim}(\text{Im}(\Phi)) < \text{dim}(V)$ -> $A_{\Phi}x=0$ has **infinitely** many solutions.
+- $\text{dim}(V)=\text{dim}(W)$ -> $\Phi \text{ is injective } \iff \Phi \text{ is surjective } \iff \Phi \text{ is bijective}$ holds since $\text{Im}(\Phi) \subseteq W$.
+
+
 
 ## 8. Affine Spaces
