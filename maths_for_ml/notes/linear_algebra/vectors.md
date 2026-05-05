@@ -209,7 +209,7 @@ Now, $\{x_{1},...,x_{m}\}$ are linearly independent *if and only if* $\{\lambda_
   - If every vector $v \in \mathcal{V}$ is a linear combination of $x_{i}$ -> $\mathcal{A}$ is a **generating set** of $V$.
   - The set of all linear combinations of vectors in $\mathcal{A}$ is the span of $\mathcal{A}$, $\mathcal{A}$ spans $V$, or $V = \text{span}[\mathcal{A}]$ or $V = \text{span}[x_{1},...,x_{k}]$.
 - **Basis**: Given $V = (\mathcal{V},+,\cdot)$ and $\mathcal{A} \subseteq{\mathcal{V}}$:
-  - If there's no smaller set $\~{\mathcal{A}}\nsubseteq{\mathcal{A}}\subseteq{\mathcal{V}}$ that spans $V$ -> $\mathcal{A}$ is **minimal**.
+  - If there's no smaller set $\tilde{\mathcal{A}}\nsubseteq{\mathcal{A}}\subseteq{\mathcal{V}}$ that spans $V$ -> $\mathcal{A}$ is **minimal**.
   - Every linearly independent generating set of $V$ is minimal and is called a **basis** of $V$.
 - $\mathcal{A}$ is: a **basis** of $V$ = a **minimal generating set** = **maximal linearly independent** set = every $x \in V$ is a **linear combination** of vectors from $\mathcal{A}$.
 
@@ -345,15 +345,15 @@ A_{\Phi} = [\alpha_1, \alpha_2, \alpha_3] = \begin{bmatrix}
 ### 7.2 Basis Change
 Linear mapping $\Phi: V \rightarrow W$. $V$ has two ordered bases:
 ```math
-B = (b_1,...,b_n), \~{B} = (\~{b}_1,...,\~{b}_n)
+B = (b_1,...,b_n), \tilde{B} = (\tilde{b}_1,...,\tilde{b}_n)
 ```
 and $W$ has two ordered bases:
 ```math
-C=(c_1,...,c_m), \~{C}=(\~{c}_1,...,\~{c}_m)
+C=(c_1,...,c_m), \tilde{C}=(\tilde{c}_1,...,\tilde{c}_m)
 ```
-Transformation matrix $A_{\Phi} \in \mathbb{R}^{m\times n}$ with respect to $B$ and $C$, $\~{A}_{\Phi} \in \mathbb{R}^{m\times n}$ with respect to $\~{B}$ and $\~{C}$. ***The question is how $A$ and $\~{A}$ are related***????
+Transformation matrix $A_{\Phi} \in \mathbb{R}^{m\times n}$ with respect to $B$ and $C$, $\tilde{A}_{\Phi} \in \mathbb{R}^{m\times n}$ with respect to $\tilde{B}$ and $\tilde{C}$. ***The question is how $A$ and $\tilde{A}$ are related***????
 
-That's the problem of basis change, from $B,C$ to $\~{B}, \~{C}$.
+That's the problem of basis change, from $B,C$ to $\tilde{B}, \tilde{C}$.
 
 *e.g., A transformation matrix with respect to the canonical basis in $\mathbb{R}^2$*
 ```math
@@ -368,27 +368,27 @@ B = (\begin{bmatrix} 1 \\ 1 \end{bmatrix},
   \begin{bmatrix} 1 \\ -1 \end{bmatrix}
 )
 ```
-*we obtain a diagonal transformation matrix with the formula $\~{A} = P^{-1}AP$ with P is the matrix with columns are the new basis.*
+*we obtain a diagonal transformation matrix with the formula $\tilde{A} = P^{-1}AP$ with P is the matrix with columns are the new basis.*
 ```math
-\~{A} = \begin{bmatrix}
+\tilde{A} = \begin{bmatrix}
   3 & 0 \\
   0 & 1
 \end{bmatrix}
 ```
-*The reason why $\~{A}$ is a diagonal matrix is because of the way they choose B as **eigenvectors** of A.*
+*The reason why $\tilde{A}$ is a diagonal matrix is because of the way they choose B as **eigenvectors** of A.*
 
 *For $b_1 = [1,1]^{T}$, $Ab_1=[3,3]^T = 3b_1$. For $b_2=[1, -1]^T$, $Ab_2 = [1, -1]^T = 1b_2$. So $b_1$ stretched by 3 and $b_2$ stretched by 1.*
 
-> **Theorem 2.20** (Basis Change): A linear mapping $\Phi: V \rightarrow W$, ordered bases of $V$ and $W$: $B=(b_{1\rightarrow n}), \~{B}=(\~{b}_{1\rightarrow n})$ and $C=(c_{1\rightarrow m}), \~{C}=(\~{c}_{1\rightarrow m})$. Transformation matrix $A_{\Phi}$ of $\Phi$ with respect to $B$ and $\~{B}$, the corresponding transformation matrix with respect to the bases $C$ and $\~{C}$ is
+> **Theorem 2.20** (Basis Change): A linear mapping $\Phi: V \rightarrow W$, ordered bases of $V$ and $W$: $B=(b_{1\rightarrow n}), \tilde{B}=(\tilde{b}_{1\rightarrow n})$ and $C=(c_{1\rightarrow m}), \tilde{C}=(\tilde{c}_{1\rightarrow m})$. Transformation matrix $A_{\Phi}$ of $\Phi$ with respect to $B$ and $\tilde{B}$, the corresponding transformation matrix with respect to the bases $C$ and $\tilde{C}$ is
 > ```math
-> \~{A}_{\Phi} = T^{-1}A_{\Phi}S
+> \tilde{A}_{\Phi} = T^{-1}A_{\Phi}S
 > ```
-- $S \in \mathbb{R}^{n\times n}$: transformation matrix of $\text{id}_V$ that maps coordinates with respect to $\~{B}$ on to coordinates with respect to $B$.
-- $T \in \mathbb{R}^{m\times m}$: transformation matrix of $\text{id}_W$ that maps the coordinates with respect to $\~{C}$ on to coordinates with respect to $C$.
+- $S \in \mathbb{R}^{n\times n}$: transformation matrix of $\text{id}_V$ that maps coordinates with respect to $\tilde{B}$ on to coordinates with respect to $B$.
+- $T \in \mathbb{R}^{m\times m}$: transformation matrix of $\text{id}_W$ that maps the coordinates with respect to $\tilde{C}$ on to coordinates with respect to $C$.
 
 **Some definitions**
-- **Equivalence**: Matrices $A, \~{A} \in \mathbb{R}^{m\times n}$ are equivalent if there exists *regular matrices* $S \in \mathbb{R}^{n\times n}, T \in \mathbb{R}^{m\times m}: \~{A} = T^{-1}AS$
-- **Similarity**: Matrices $A, \~{A} \in \mathbb{R}^{n\times n}$ are similar if there exists a *regular matrix* $S\in\mathbb{R}^{n\times n}: \~{A}=S^{-1}AS$.
+- **Equivalence**: Matrices $A, \tilde{A} \in \mathbb{R}^{m\times n}$ are equivalent if there exists *regular matrices* $S \in \mathbb{R}^{n\times n}, T \in \mathbb{R}^{m\times m}: \tilde{A} = T^{-1}AS$
+- **Similarity**: Matrices $A, \tilde{A} \in \mathbb{R}^{n\times n}$ are similar if there exists a *regular matrix* $S\in\mathbb{R}^{n\times n}: \tilde{A}=S^{-1}AS$.
 
 *e.g., $\Phi:\mathbb{R}^3\rightarrow\mathbb{R}^4$ and transformation matrix*
 ```math
@@ -413,14 +413,14 @@ C = (
   \begin{bmatrix}0\\0\\0\\1\end{bmatrix}
 )
 ```
-*We seek the transformation matrix $\~{A}_{\Phi}$ with respect to new bases*
+*We seek the transformation matrix $\tilde{A}_{\Phi}$ with respect to new bases*
 ```math
-\~{B} = (
+\tilde{B} = (
   \begin{bmatrix}1\\1\\0\end{bmatrix},
   \begin{bmatrix}0\\1\\1\end{bmatrix},
   \begin{bmatrix}1\\0\\1\end{bmatrix}
 ) \in \mathbb{R}^3,
-\~{C} = (
+\tilde{C} = (
   \begin{bmatrix}1\\1\\0\\0\end{bmatrix},
   \begin{bmatrix}1\\0\\1\\0\end{bmatrix},
   \begin{bmatrix}0\\1\\1\\0\end{bmatrix},
@@ -443,7 +443,7 @@ T = \begin{bmatrix}
 ```
 $Applying **theorem 2.20**, we have$
 ```math
-\~{A}_{\Phi}=T^{-1}A_{\Phi}S = \frac{1}{2}\begin{bmatrix}
+\tilde{A}_{\Phi}=T^{-1}A_{\Phi}S = \frac{1}{2}\begin{bmatrix}
   1 & 1 & -1 & -1 \\
   1 & -1 & 1 & -1 \\
   -1 & 1 & 1 & 1 \\
@@ -484,3 +484,33 @@ Linear mapping $\Phi:V\rightarrow W$ (V := domain, W := codomain of $\Phi$).
 
 
 ## 8. Affine Spaces
+Spaces are offset fromt he origin, no longer subspaces.
+> **Compare an Affine Space/Mapping and a Linear Space/Mapping?**
+
+### 8.1 Affine Subspaces
+- **Affine Subspace**: Vector space $V$, subspace $U \subseteq V$, $x_0 \in V$. -> *affine subspace* (or *linear manifold*) $L$ of $V$
+```math
+L = x_0 + U := \{ x_0 + u: u \in U \}
+  = \{ v \in V|\exists u\in U: v = x_0 + u \} \subseteq U
+```
+where $U$:= direction space; $x_0$:= support point
+
+> ***First-Principles**: In an *affine space*, any two points can be connected by a unique vector. Say, if $A, B$ in affine space $L \in V$, then $\exists \overrightarrow{v} \in V: \overrightarrow{v} = A - B$.*
+
+*e.g., Let $V=\mathbb{R}^3$, what objects don't neccessarily go through the origin?*
+
+*$L$ = points, lines, planes are affine subspaces in $V$. Because,*
+- ***Points**: for a point $x_0 \in \mathbb{R}^3$, any point $u \in U \subseteq \mathbb{R}^3$, they could form a line or a plane, which is an affine space in $\mathbb{R}^3$. Actually, a single point doesn't form an affine subspace, just treat it as a 0-dimensional subspace.*
+- ***Line**: A line containes points, 2 of which determine a unique direction vector for that line.*
+- ***Plane**: A plane contain lines and three non-collinear points that determine the plane.*
+
+In $\mathbb{R}^n$, the $(n-1)$-dimensional affine subspaces are called **hyperplanes**, and the parametric equation is $y = x_0 + \sum_{i=1}^{n-1}\lambda_i b_i$ for $(b_1,...,b_{n-1})$ is a basis of that affine subspace.
+
+> For $A\in \mathbb{R}^{m\times n}, x\in \mathbb{R}^m$, the solution of $A\lambda= \sum_{i=1}^n\lambda_i \ x_i =x$ is either the empty set or an *affine subspace* of $\mathbb{R}^n$ of dimension $n-\text{rk}(A)$. k-dimensional affine subspace solution of $A\lambda = x$ with $\text{rk}(A) = n - k$
+
+### 8.2 Affine Mappings
+Mappings between two *affine spaces*. For $a \in W$
+```math
+\Phi: V \rightarrow W \\
+x \mapsto a + \Phi(x)
+```
