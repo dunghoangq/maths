@@ -64,6 +64,48 @@ c_{n-1} = (-1)^{n-1}\text{tr}(A)
 
 ## 2. Eigenvalues and Eigenvectors
 
+Eigenvalue equation
+
+```math
+Ax = \lambda x
+```
+
+for $A \in \mathbb{R}^{n\times n}, \lambda \in \mathbb{R}, x \in \mathbb{R}\backslash\{0\}$.
+- The equation must be non-trivial.
+- $\text{rk}(A - \lambda I_n) < n$
+- $\text{det}(A - \lambda I_n) = 0$
+- $\forall c \in \mathbb{R}\backslash\{0\}: A(cx) = cAx = c\lambda x = \lambda (cx)$
+
+> **Theorem 4.8**. $\lambda$ is an eigenvalue of $A$ if and only if $\lambda$ is a root of the characteristic polynomial $p_A(\lambda)$ of $A$.
+
+*Remember $p_A(\lambda):=\text{det}(A - \lambda I)$*.
+
+**Eigenspace** := set of all *eigenvectors*.
+
+**Eigenspectrum** := set of all *eigenvalues*.
+
+**Geometric Multiplicity**: number of *linearly independent* eigenvectors associated with eigenvalues $\lambda_i$.
+
+> **Theorem 4.12**. Eigenvectors $x_i$ with distinct eigenvalues $\lambda_i$ are linearly independent.
+
+If a matrix $A \in \mathbb{A}^{n\times n}$ is **defective** if it possesses fewer than $n$ linearly independent eigenvectors.
+
+> Theorem 4.14. Matrices $A,S \in \mathbb{R}^{n\times n}$ ($S$ *is semidefinite*): $S := A^TA$.
+
+> **Theorem 4.15** (Special Theorem). If $A \in \mathbb{R}^{n\times n}$ is *symmetric*, there exists an orthonormal basis of the corresponding vector space $V$ consisting of eigenvectors of $A$ and each eigenvalue is real.
+
+> **Theorem 4.16**. Determinant = Product of eigenvalues.
+> ```math
+> \text{det}(A) = \prod_{i=1}^n\lambda_i
+> ```
+
+> Theorem 4.17. Trace = Sum of eigenvalues.
+> ```math
+> \text{tr}(A) = \sum_{i=1}^n\lambda_i
+> ```
+
+*e,g,. PageRank algorithm considers webpages as Eigenvectors. Write down all webpages as a directed graph. Go read their paper.*
+
 ------------------------------------
 
 ## 3. Cholesky Decomposition
