@@ -1,8 +1,8 @@
 # Matrix Decompositions
-- Determinant > Invertibility > Cholesky > Chap 6 - Probability & Distributions
+- Determinant > Invertibility > Cholesky > **Chap 6 - Probability & Distributions**
 - Determinant > Eigenvalues > 
   - Eigenvectors > Orthogonal matrix
-  - Diagonalisation > SVD > Chap 10 - Dimensionality Reduction.
+  - Diagonalisation > SVD > **Chap 10 - Dimensionality Reduction**.
 
 -----------------------------------------------
 
