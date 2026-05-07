@@ -110,10 +110,44 @@ If a matrix $A \in \mathbb{A}^{n\times n}$ is **defective** if it possesses fewe
 
 ## 3. Cholesky Decomposition
 
+**Cholesky Decomposition**: Symmetric, positive definite matrix $A = LL^T$ where %L% and %L^T% are lower and upper triangular matrices. $L$ is also called *Cholesky factor* of $A$.
+```math
+\begin{bmatrix}
+    a_{11} & \cdots & a_{1n} \\
+    \vdots & \ddots & \vdots \\
+    a_{n1} & \cdots & a_{nn}
+\end{bmatrix}
+= \begin{bmatrix}
+    l_{11} & \cdots & 0 \\
+    \vdots & \ddots & \vdots \\
+    l_{n1} & \vdots & l_{nn}
+\end{bmatrix}
+\begin{bmatrix}
+    l_{11} & \cdots & l_{n1} \\
+    \vdots & \ddots & \vdots \\
+    0 & \cdots & l_{nn}
+\end{bmatrix}
+```
+
 ------------------------------------
 
 ## 4. Eigendecomposition & Diagonalisation
 
+$A \in \mathbb{R}^{n\times n}$ is diagonalisable if $\exists P \in \mathbb{R}^{n\times n}$:
+```math
+D = P^{-1}AP \Leftrightarrow AP = PD
+```
+
+**Eigendecomposition**:
+```math
+A = PDP^{-1}
+```
+
 ------------------------------------
 
 ## 5. Singular Value Decomposition (SVD)
+
+> **Theorem 4.22** (SVD Theorem). Rectangular matrix $A\in \mathbb{R}^{m\times n}$, rank $r \in [0, \text{min}(m,n)]$. Then for $U \in \mathbb{R}^{m\times m}, V \in \mathbb{R}^{n\times n}$
+> ```math
+> A = U\Sigma V^T
+> ```
